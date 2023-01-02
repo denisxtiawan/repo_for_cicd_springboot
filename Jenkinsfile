@@ -35,7 +35,7 @@ node {
 	   sh "docker rm docker_spring_app"
 
       // create and run container
-	  sh "docker run  --detach  --name docker_spring_app  --publish 8181:8181 --network=docker_spring_network  -e APP_HOST=spring_docker_app   -e APP_PORT=8181 -e APP_DB_HOST=host.docker.internal -e APP_DB_PORT=3300  -e APP_DB_USER=user -e APP_DB_PASSWORD=password -e APP_DB_NAME=database app:${env.BUILD_NUMBER}"
+	  sh "docker run  --detach  --name docker_spring_app  --publish 8181:8181 --network=server_network  -e APP_HOST=spring_docker_app   -e APP_PORT=8181 -e APP_DB_HOST=host.docker.internal -e APP_DB_PORT=3300  -e APP_DB_USER=user -e APP_DB_PASSWORD=password -e APP_DB_NAME=database app:${env.BUILD_NUMBER}"
 
 	  // -e APP_HOST=spring_docker_app   -e APP_PORT=8181 -e APP_DB_HOST=docker_spring_mysql -e APP_DB_PORT=3300  -e APP_DB_USER=user -e APP_DB_PASSWORD=password -e APP_DB_NAME=database
 
