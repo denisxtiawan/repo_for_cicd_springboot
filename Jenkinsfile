@@ -7,7 +7,7 @@ node {
     stage('Clone Repo') {
       echo "Clone Repo from a GitHub repo"
 
-      checkout(git branch: 'main', credentialsId: 'my_github', url: 'https://github.com/denisxtiawan/repo_for_cicd_springboot')
+      checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'my_github', url: 'https://github.com/denisxtiawan/repo_for_cicd_springboot']])
 
       mvnHome = tool 'maven-3.5.2'
     }
