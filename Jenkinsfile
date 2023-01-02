@@ -7,7 +7,7 @@ node {
     stage('Clone Repo') {
       echo "Clone Repo from a GitHub repo"
 
-      git branch: 'main', credentialsId: 'my_github', url: 'https://github.com/denisxtiawan/repo_for_cicd_springboot'
+      checkout(git branch: 'main', credentialsId: 'my_github', url: 'https://github.com/denisxtiawan/repo_for_cicd_springboot')
 
       mvnHome = tool 'maven-3.5.2'
     }
@@ -23,7 +23,6 @@ node {
       sh "ls -lrt"
       sh "docker image build -t app:${env.BUILD_NUMBER} . "
       sh "docker images"
-	  
 
     }
 
@@ -36,9 +35,9 @@ node {
 	  // sh "docker rm restapi-springboot-mysql"
 
       // create and run container
-	  sh "docker run  --detach  --name docker_spring_app  --publish 8181:8181 --network=server_network  -e APP_HOST=spring_docker_app   -e APP_PORT=8181 -e APP_DB_HOST=docker_spring_mysql -e APP_DB_PORT=3311  -e APP_DB_USER=user -e APP_DB_PASSWORD=password-e APP_DB_NAME=database  app:${env.BUILD_NUMBER}"
+	  sh "docker run  --detach  --name docker_spring_app  --publish 8181:8181 --network=server_network  -e APP_HOST=spring_docker_app   -e APP_PORT=8181 -e APP_DB_HOST=docker_spring_mysql -e APP_DB_PORT=3300  -e APP_DB_USER=user -e APP_DB_PASSWORD=password -e APP_DB_NAME=database app:${env.BUILD_NUMBER}"
 
-	  // -e APP_HOST=spring_docker_app   -e APP_PORT=8181 -e APP_DB_HOST=docker_spring_mysql -e APP_DB_PORT=3311  -e APP_DB_USER=user -e APP_DB_PASSWORD=password-e APP_DB_NAME=database
+	  // -e APP_HOST=spring_docker_app   -e APP_PORT=8181 -e APP_DB_HOST=docker_spring_mysql -e APP_DB_PORT=3300  -e APP_DB_USER=user -e APP_DB_PASSWORD=password -e APP_DB_NAME=database
 
     }
 
