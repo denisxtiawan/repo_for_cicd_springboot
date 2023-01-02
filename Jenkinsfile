@@ -7,7 +7,7 @@ node {
     stage('Clone Repo') {
       echo "Clone Repo from a GitHub repo"
 
-      checkout(git branch: 'main', credentialsId: 'my_github', url: 'https://github.com/denisxtiawan/repo_for_cicd_springboot')
+      git branch: 'main', credentialsId: 'my_github', url: 'https://github.com/denisxtiawan/repo_for_cicd_springboot'
 
       mvnHome = tool 'maven-3.5.2'
     }
@@ -23,6 +23,7 @@ node {
       sh "ls -lrt"
       sh "docker image build -t app:${env.BUILD_NUMBER} . "
       sh "docker images"
+	  
 
     }
 
