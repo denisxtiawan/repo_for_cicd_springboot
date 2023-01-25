@@ -32,11 +32,11 @@ node {
       echo "Deploy docker image"
 
 	  // run if this container is exist
-	  // sh "docker stop restapi_springboot_mysql"
-	  // sh "docker rm restapi_springboot_mysql"
+	  // sh "docker stop deployed_restapi_springboot_mysql"
+	  // sh "docker rm deployed_restapi_springboot_mysql"
 
       // create and run container
-	  sh "docker run  --detach  --name restapi_springboot_mysql  --publish 1234:1234 --network=server_network  -e APP_HOST=restapi_springboot_mysql   -e APP_PORT=1234 -e APP_DB_HOST=server_mysql -e APP_DB_PORT=3300  -e APP_DB_USER=user -e APP_DB_PASSWORD=password -e APP_DB_NAME=database app:${env.BUILD_NUMBER}"
+	  sh "docker run  --detach  --name deployed_restapi_springboot_mysql  --publish 1234:1234 --network=server_network  -e APP_HOST=deployed_restapi_springboot_mysql   -e APP_PORT=1234 -e APP_DB_HOST=server_mysql -e APP_DB_PORT=3300  -e APP_DB_USER=user -e APP_DB_PASSWORD=password -e APP_DB_NAME=database app:${env.BUILD_NUMBER}"
 
 	  // -e APP_HOST=spring_docker_app   -e APP_PORT=8181 -e APP_DB_HOST=docker_spring_mysql -e APP_DB_PORT=3300  -e APP_DB_USER=user -e APP_DB_PASSWORD=password -e APP_DB_NAME=database
 
