@@ -14,8 +14,8 @@ node {
 
     stage('Build Project') {
       echo "build project via maven"
-      sh "'${mvnHome}/bin/mvn' clean install -o"
-      //sh "'${mvnHome}/bin/mvn' clean install "
+      //sh "'${mvnHome}/bin/mvn' clean install -o"
+      sh "'${mvnHome}/bin/mvn' clean install "
     }
 
     stage('Build Docker Image') {
